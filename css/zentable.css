@@ -1,0 +1,364 @@
+.zentable {
+    position: relative;
+    margin-left:2%;
+    border: 1px solid black;
+    width: 96%; 
+    background-color: #f0f0f0;
+    background: url('ztimgs/background.jpg');
+}
+
+.zentable .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #e0e0e0;
+    z-index: 2;
+    display: none;
+    
+}
+
+.zentable .row, .zentable .headerrow, .zentable .totals {
+    border-bottom: 1px solid #8090a0;
+    height: 20px;
+    white-space: nowrap;
+}
+
+.zentable .row .hover {
+    background: url('ztimgs/back1.gif');
+    color: #000000;
+    border-right: 1px solid transparent;
+}
+
+
+.zentable .headerrow { 
+  height: 22px; 
+  border-bottom: 1px solid black;
+}
+
+.zentable .ascending, .zentable .descending {
+    width: 16px;
+    height: 16px;
+    top: 2px;
+    position: absolute;
+    right: 2px;
+}
+
+.zentable .ascending  {
+    background: url(ztimgs/order-asc.gif);
+}
+
+.zentable .descending  {
+    background: url(ztimgs/order-desc.gif);
+}
+
+.zentable .cell, .zentable .totals div {
+    font-size: 1em;
+    border-right: 1px solid #8090a0;
+    height: 18px;
+    float: left;
+    padding: 1px 4px;
+    color: #082028;
+    overflow: hidden;
+}
+
+
+.zentable .cell a { display:block; }
+
+/*.zentable .row:hover .cell a { 
+    color:#FFFF00;
+    text-decoration: underline;  
+}*/
+
+.zentable .header {
+    background: url(ztimgs/back-strip.gif);
+    border-right: 1px solid black;
+    line-height: 20px;
+    float:left;
+    padding: 1px 4px;
+    background-color: #405060;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    overflow: hidden;    
+    position: relative;    
+}
+
+.zentable .orderable { cursor: pointer; }
+
+.zentable .orderable:hover {
+    background: url(ztimgs/back-strip-hover.gif);
+    color:  white;
+}
+
+.zentable .totals div {
+    background: url(ztimgs/back-strip-hover.gif);
+    font-weight: bold;
+}
+
+.zentable .resize {
+    cursor: col-resize;
+    width: 8px;
+    height: 22px;
+    position: absolute;
+    z-index: 3;
+}
+
+.zentable .scroll {
+    z-index: 1;
+    background-color: #A0A0A0;
+    background: url(ztimgs/back-scrollbar.gif);
+    border-left: 1px solid #404040;
+    position: absolute;
+    right: 0px;
+    width: 20px;
+    height: 100%;
+    display: none;
+    cursor: pointer;
+}
+
+.zentable .scroll .drag_container {
+    position:relative;
+}
+
+
+.zentable .scroll .drag {
+    position: absolute;
+    width: 18px;
+    height: 22px;
+    border: 1px solid #808080;
+    background: url(ztimgs/back-scroll.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #b0b0b0;
+    cursor: row-resize;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}
+
+.zentable .scroll .drag:hover {
+    border: 1px solid #404040;
+    background-color: #808080;
+} 
+
+.zentable .scroll .buttonup, .zentable .scroll .buttondn {
+    width: 20px;
+    height: 22px;
+    background-color: #CCCCCC;
+}
+
+.zentable .scroll .buttonup { 
+  border-bottom: 1px solid #606060; 
+  background: url(ztimgs/scroll-up.gif) no-repeat -1px 0px;
+}
+
+.zentable .scroll .buttonup:hover { 
+  background-position: -23px 0px;
+}
+
+
+.zentable .scroll .buttondn {
+    position: absolute;
+    border-top: 1px solid #606060;
+    bottom: 0px;
+    background: url(ztimgs/scroll-down.gif) no-repeat -1px 0px;
+}
+
+.zentable .scroll .buttondn:hover { 
+  background-position: -23px 0px;
+}
+
+.zentable .tip {
+    position: absolute;
+    color: black;
+    border: 1px solid black;
+    background-color: #FFFFC0;
+    z-index: 99;
+    padding: 1px 4px;
+    font-size: 0.85em;
+    display: none;
+}
+
+.zentable .field {
+    position: absolute;
+    z-index: 3;
+    display: none;
+    height: 21px;
+}
+
+.zentable .field input {
+    font-family: Arial;
+    font-size: 1em;
+}
+
+.zentable .field input {
+    border: 1px solid black;
+    padding: 1px 0px 1px 4px;
+    background: url(ztimgs/input.gif);
+}
+
+.zentable .status {
+    height: 14px;
+    /*background-color: #738191;*/
+background-color: #606060;
+    color: #e0e0e0;
+    padding-left: 8px;
+    cursor: row-resize;
+}
+
+
+.zentable .status #message {
+    float: left;
+    font-size: 0.85em;
+}
+
+.zentable .status #loading {
+    float: right;
+    margin-right: 20px;
+    padding: 0px 8px;
+    background-color: #d0e8f0;
+    color: #204060;
+    font-weight: bold;
+    line-height: 14px;
+    border-left: 1px solid #404040;
+    border-right: 1px solid #404040;
+    display: none;
+}
+
+.zentable .status #csv {
+    float: right;
+    padding-right: 24px;
+    /*padding-top: 1px;*/
+	font-size:0.9em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.zentable .status #csv:hover {
+    color:  #707070;
+    background-color: #e0e0e0;
+}
+
+.zentable .prov * { 
+  color:#303030;
+  background-color: #f8f8f8;
+}
+
+.zentable .pending * { 
+  color:#800000;
+  background-color: #ffe0e0;
+}
+
+.zentable .prio2 * { 
+  color:#800000;
+  background-color: #ffe0e0;
+}
+
+.zentable .prio1 * { 
+  color:#400000;
+  background-color: #fff0f0;
+}
+
+.zentable .prio-1 * { 
+  color:#000040;
+  background-color: #f0f0ff;
+}
+
+.zentable .prio-2 * { 
+  color:#000080;
+  background-color: #e0e0ff;
+}
+
+.zentable .prov:hover .cell a { background-color: inherit; }
+.zentable .pending:hover .cell a { background-color: inherit; }
+.zentable .prio2:hover .cell a { background-color: inherit; }
+.zentable .prio1:hover .cell a { background-color: inherit; }
+.zentable .prio-1:hover .cell a { background-color: inherit; }
+.zentable .prio-2:hover .cell a { background-color: inherit; }
+
+#zt_csvwin {
+    display: none;
+    position: absolute;
+    width: 70%;
+    height: 400px;
+    left: 15%;
+    top: 50px;
+    background-color: #ffffd8;
+    border: 1px solid black;
+}
+
+#zt_csvwin #close, #zt_csvwin #select {
+  float: right;
+  margin-right: 8px;
+  color: #FFC080;
+  cursor: pointer;
+}
+
+#zt_csvwin #close:hover, #zt_csvwin #select:hover {
+  color: white;
+}
+
+#zt_csvwin #header {
+    width: 99%;
+    background: url(ztimgs/back-strip.gif);
+    line-height: 20px;
+    background-color: #405060;
+    color: #ffffff;
+    font-weight: bold;
+    padding-left: 1%;
+}
+
+#zt_csvwin #csv {
+    padding: 0px 1%;
+    font-family: monospace, Courier;
+    font-size: 12px;
+    height: 380px;
+    width: 98%;
+    overflow: auto;
+    border: 0px;
+    white-space: pre;
+}
+
+.zt_csvwin {
+    display: none;
+    position: absolute;
+    width: 70%;
+    height: 400px;
+    left: 15%;
+    top: 50px;
+    background-color: #ffffd8;
+    border: 1px solid black;
+}
+
+.zt_csvwin #close, .zt_csvwin #select {
+  float: right;
+  margin-right: 8px;
+  color: #FFC080;
+  cursor: pointer;
+color: #ffffff;
+}
+
+.zt_csvwin #close:hover, .zt_csvwin #select:hover {
+  color: white;
+}
+
+.zt_csvwin #header {
+    width: 99%;
+    background: url(ztimgs/back-strip.gif);
+    line-height: 20px;
+    background-color: #405060;
+    color: #ffffff;
+    font-weight: bold;
+    padding-left: 1%;
+}
+
+.zt_csvwin #csv {
+    padding: 0px 1%;
+    font-family: monospace, Courier;
+    font-size: 12px;
+    height: 380px;
+    width: 98%;
+    overflow: auto;
+    border: 0px;
+    white-space: pre;
+}

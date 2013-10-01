@@ -1,0 +1,193 @@
+<html>
+<head>
+<style type="text/css">
+body { 
+    font-family: Arial, Helvetica, sans-serif; 
+    padding: 8px;
+}
+
+.options, pre  { 
+    background-color: #f0f0f0; 
+    border: 1px solid black;
+    color: #404040;
+
+}
+pre { padding: 6px; }
+.options > li {
+    font-weight: bold;
+    color: #004060;
+}
+</style>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="css/zentable.css">
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="js/jquery.timers-1.1.2.js"></script>
+<script type="text/javascript" src="js/jquery.zentable.min.js"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#table").zentable({
+        cols: [{name:'Surname', editable:true}, {name:'Name and title', editable:true}, {name:'Room'}, {name:'Boat'}, {name:'Destination'}],
+        data: [
+            ['Allen','Miss Elisabeth Walton','B-5',2, 'St Louis, MO'],
+            ['Allison','Mrs Hudson J.C.  (Bessie Waldo Daniels)','C-26','','Montreal, PQ / Chesterville, ON'],
+            ['Artagaveytia', 'Mr Ramon', '', '(22)', 'Montevideo, Uruguay'],
+            ['Barkworth', 'Mr Algernon H.', 'A-23', 'B', 'Hessle, Yorks'],
+            ['Bjornstrm-Steffansson', 'Mr Mauritz Hakan', '', 'D', 'Stockholm, Sweden / Washington, DC'],
+            ['Cardeza', 'Mrs James Warburton Martinez (Charlotte Wardle Drake)', 'B-51/3/5', '3', 'Germantown, Philadelphia'],
+            ['Carter', 'Master William T. II', '', '4', 'Bryn Mawr, PA'],
+            ['Clark', 'Mrs Walter Miller (Virginia McDowell)', 'C-87', '4', 'Los Angeles, CA']
+        ],
+        onedit: function() { alert('edited'); },
+        rows: 6
+    });
+});
+</script>
+
+<h1>Zentable v1.0.4</h1>
+
+<p>
+Zentable is a plug-in for the <a href="http://www.jquery.com">jQuery</a> Javascript library. It allows
+to show and manipulate tabulated data on a web page but with functionalities typically expected from
+native applications, as scrolling with the mouse wheel, resizing column widths or using keys to move
+through the data. It can be used with or without AJAX, but is using AJAX where this plug-in really shines.
+</p>
+<p>Main features are:</p>
+<table width="100%" class="zen_destacar"><tr><td>
+<ul>
+  <li>Data loaded on demand using AJAX, or embedded in the page.</li>
+  <li>Mouse wheel and keyboard can be also used for scrolling.</li>
+  <li>Column resizing, auto resizing and table resizing</li>
+  <li>Orderable and filtrable by columns.</li>
+  <li>Tooltips</li>
+  <li>Editable</li>
+  <li>Supports HTML as content</li>
+  <li>Themeable by CSS. Supports different styles for rows and columns.</li>
+</ul>
+</td></tr></table>
+<br>
+<strong>Example 1</strong>: static data with surname and name editable.
+<br><br>
+</span>
+
+<div id="table" class="zentable" style="margin-left:0px"></div>
+
+<span class="textStandard">
+<br><br>
+<strong>Usage</strong>:
+
+This plugin requires Draggable from jQuery UI, jquery mousewheel plugin and jquery timers, all of them bundled
+with the zentable package, so we include in the header all the scripts and classes needed:
+
+<pre>
+&lt;link rel="stylesheet" type="text/css" href="/css/zentable.css"&gt;
+&lt;script type="text/javascript" src="/js/jquery.mousewheel.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/js/jquery-ui-1.7.2.custom.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/js/jquery.timers-1.1.2.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/js/jquery.zentable.min.js"&gt;&lt;/script&gt;
+</pre>
+
+First create a div with class table in the place where table must show:
+
+<pre>&lt;div id="mytable" class="table"&gt;&lt;/div&gt;</pre>
+
+Finally, we invoke the Javascript code that will invoke the plugin:
+
+<pre>
+ $("#zentable").zentable({
+    options...
+});
+</pre>
+<br><br>
+<strong>Options</strong>:There are several options that allow to change table behaviour and customize it:
+<br>
+<ul class="options">
+  <li>cols</li> An array containing columns. This is only used when data is embedded in the HTML itself.
+      Otherwise, when data is retrieved through AJAX requests, this information is got from the XML. Each
+      column has, at the same time, more options:
+      <br><br>
+      <strong>name</strong>: Name of the column shown in header<br>
+      <strong>id</strong>: Name of the column in database (used for sorting or editing)<br>
+      <strong>html</strong>: By default false. If true, cells on this column can contain HTML code.<br>
+      <strong>width</strong>: Column width in pixels. If not specified, the autowidth algorihtm is used.<br>
+      <strong>editable</strong>: If true, this column is editable. Option onedit must be provided.<br>
+      <strong>orderable</strong>: True by default. If true, clicking on the header sorts table by that column.<br>
+      <strong>clss</strong>: A CSS class to be added to that column.<br>
+      <strong>hidden</strong>: A hidden column. May be used to store values that are not going to be shown.
+
+  <br><br>
+  <li>data</li> When this option contains an array of rows, being each row an array of columns, the data
+      shown in the table is got from here. When this option contains an string, it is used as the URL for
+      making AJAX requests to retrieve the data. If this options is empty, the table is also shown empty.
+  <br><br>
+  <li>hideIfEmpty</li> Hide completely the table if it is empty. It is true by default.
+  <br><br>
+  <li>filters</li> An array of strings containing the names of the columns that can be filtered. For each filter,
+      an input text, checkbox or select box must exists with the column name as id. Each time the value is changed
+      in the input text, checkbox or select, table data is updated through AJAX.
+  <br><br>
+  <li>onclick</li> A function that is invoked when a click is done on a cell.
+  <br><br>
+  <li>onedit</li> A function that is invoked when a cell is edited. For a cell to be editable, this option
+    must not be undefined and the column has to be created with the editable option.
+  <br><br>
+  <li>order</li> Which field is used for ordering. Only works when table is AJAXed.
+  <br><br>
+  <li>rows</li> Maximum number of visible rows (by default 10). If there are more data rows than this option,
+    the scrollbar is shown. The number of visible rows can be changed on the fly dragging vertically the status
+    bar of the table.
+  <br><br>
+  <li>stylesInRows</li> If true, rows can have class.
+  <br><br>
+  <li>totalsRow</li> If true, a row for showing totals is added at the end of the table.
+</ul>
+<br><br>
+
+<strong>Methods</strong>:
+  <ul>
+    <li>.zentable('get'): Returns the zentable instance</li>
+    <li>.zentable('focus'): Puts the focus on this zentable. Focused table is the one that receives key events.</li>
+  </ul>
+
+
+<br><br>
+<strong>Using zentable with AJAX</strong>: For using zentable with AJAX, provide a string with the URL of the
+    AJAX data source. This URL must accept at least these parameters:
+    <br><br>
+    <strong>start</strong>: First row to be retrieved (first one is 0)<br>
+    <strong>pagesize</strong>: How many rows retrieve<br>
+    <strong>order</strong>: Which column use for order
+    <br><br>
+    Additionally, for each filter a new parameter with the name of that filter will be sent in the URL.
+    <br><br>
+    The AJAX request is expected to return an XML with the next form:
+    <br><br>
+<pre>
+&lt;data&gt;
+    &lt;headers&gt;
+        &lt;col id=String [orderable=Boolean] [html=Boolean] [width=Integer]
+                [editable=Boolean] [class=String]&gt;(Value)&lt;/col&gt;+
+    &lt;/headers&gt;+
+    &lt;row [class=String] &gt;
+        &lt;col [link=String]&gt;(Value)&lt;/col&gt;+
+    &lt;/row&gt;+
+    [&lt;totals&gt;
+        &lt;col&gt;(Value)&lt;/col&gt;+
+    &lt;/totals&gt;]
+    &lt;offset&gt;(Value)&lt;/offset&gt;
+    &lt;totalrows&gt;(Value)&lt;/totalrows&gt;
+&lt;/data&gt;
+</pre>
+Brackets mean an optional element, and plus means that the node can be repeated N times.
+offset will contain the same value as input parameter start, and totalrows contains
+the total number of rows (not the number of rows contained in the XML, that will be the same
+as pagesize parameter, but the total number of rows that can be viewed scrolling).
+</span>
+<br><br>
+<strong><a href="http://zentense.s3.amazonaws.com/jquery.zentable.0.9.6.tgz">Download</a></strong>
+</body>
+</html>
