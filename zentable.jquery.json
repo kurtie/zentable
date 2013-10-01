@@ -9,7 +9,7 @@
     ],
     "version": "1.0.4",
     "author": {
-        "name": "Jose R. Cabanes",
+        "name": "Zentense",
         "url": "http://www.zentense.com"
     },
     "maintainers": [ {
@@ -23,6 +23,8 @@
             "url": "https://raw.github.com/kurtie/zentable/master/LICENSE"
         }
     ],
+    "homepage": "https://github.com/kurtie/zentable",
+    "demo": "http://www.zentense.com/jQuery-AJAX-data-table-zentable.en.html",      
     "dependencies": {
         "jquery": ">=1.5"
     }
