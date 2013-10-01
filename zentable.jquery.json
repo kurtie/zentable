@@ -1,0 +1,30 @@
+{
+    "name": "zentable",
+    "title": "jQuery Zentable",
+    "description": "jQuery Zentable llows to show and manipulate tabulated data on a web page, with or without AJAX",
+    "keywords": [
+        "table",
+        "data",
+        "AJAX"
+    ],
+    "version": "1.0.4",
+    "author": {
+        "name": "Jose R. Cabanes",
+        "url": "http://www.zentense.com"
+    },
+    "maintainers": [ {
+        "name": "Jose R. Cabanes",
+        "email": "kurt@zentense.com",
+        "url": "http://www.zentense.com/-contacto.en.html"    
+    } ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://raw.github.com/kurtie/zentable/master/LICENSE"
+        }
+    ],
+    "dependencies": {
+        "jquery": ">=1.5"
+    }
+        
+}
